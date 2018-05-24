@@ -4,12 +4,14 @@ require './lib/author'
 class AuthorTest < Minitest::Test
   def test_it_exists
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+
     assert_instance_of Author, charlotte_bronte
   end
 
   def test_author_starts_with_no_books_written
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     actual = charlotte_bronte.books
+
     assert_equal [], actual
   end
 
@@ -18,6 +20,7 @@ class AuthorTest < Minitest::Test
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     actual = charlotte_bronte.add_book("Jane Eyre", "October 16, 1847").title
     expected = book.title
+
     assert_equal expected, actual
   end
 
@@ -25,10 +28,13 @@ class AuthorTest < Minitest::Test
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     actual1 = charlotte_bronte.books
     expected1 = []
+
     assert_equal expected1, actual1
+
     charlotte_bronte.add_book("Jane Eyre", "October 16, 1847")
     actual2 = charlotte_bronte.books[0].title
     expected2 = "Jane Eyre"
+
     assert_equal expected2, actual2
   end
 
@@ -36,17 +42,22 @@ class AuthorTest < Minitest::Test
     charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
     actual1 = charlotte_bronte.books
     expected1 = []
+
     assert_equal expected1, actual1
+
     charlotte_bronte.add_book("Jane Eyre", "October 16, 1847")
     actual2 = charlotte_bronte.books[0].title
     expected2 = "Jane Eyre"
+
     assert_equal expected2, actual2
+
     charlotte_bronte.add_book("Villette", "1853")
     actual3 = charlotte_bronte.books[1].title
     expected3 = "Villette"
+    
     assert_equal expected3, actual3
   end
 
-  
+
 
 end
